@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ST PLAY — app web Tizen para TV Samsung.
+
+  Para publicar na Samsung Apps Store o par (package / application id) tem de ser
+  o App ID de 10 caracteres que o Seller Office emite no cadastro do app.
+  Enquanto for instalação por modo desenvolvedor (sdb), qualquer id de 10
+  caracteres alfanuméricos começando por letra serve — o atual é "stplay0001".
+-->
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:tizen="http://tizen.org/ns/widgets"
+        id="http://sturplay.com/tv"
+        version="1.0.0"
+        viewmodes="maximized">
+
+    <tizen:application id="stplay0001.STPlayTV"
+                       package="stplay0001"
+                       required_version="2.3"/>
+
+    <content src="index.html"/>
+
+    <name>ST PLAY</name>
+    <description>Player de canais ST PLAY para TV Samsung.</description>
+    <author href="https://github.com/StuartLipe" email="contato@sturplay.com">Felipe</author>
+
+    <icon src="res/icon-512.png"/>
+
+    <!--
+      access origin="*" é a permissão de rede do widget (W3C). Sem ela o motor
+      do Tizen bloqueia fetch para hosts externos mesmo com a privilege de
+      internet declarada.
+    -->
+    <access origin="*" subdomains="true"/>
+
+    <tizen:profile name="tv"/>
+
+    <!-- Rede: painel Xtream, catálogo e streams -->
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <!-- Leitura das teclas do controle remoto (tizen.tvinputdevice) -->
+    <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+    <!-- AVPlay, se o player trocar hls.js por decodificação nativa -->
+    <tizen:privilege name="http://tizen.org/privilege/avplay"/>
+
+    <tizen:setting screen-orientation="landscape"
+                   context-menu="disable"
+                   background-support="disable"
+                   encryption="disable"
+                   install-location="auto"
+                   hwkey-event="enable"/>
+</widget>

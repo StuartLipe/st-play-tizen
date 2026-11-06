@@ -1,0 +1,6 @@
+# Chave privada de assinatura — nunca versionar nem empacotar
+cert/
+
+# Pacote gerado
+*.wgt
+build/

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <script src="./stplay-config.js?v=1793941597"></script>
+    <script src="./tizen-ui.js?v=1793941597"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: http: https:; media-src 'self' blob: http: https: sturplay:; connect-src 'self' http: https: sturplay:; worker-src 'self' blob:; child-src blob:; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'" />
+    <!--
+      Sem CSP em 1.0.5. Este Ã© um app que renderiza dado vindo de painel de
+      IPTV (terceiro, nÃ£o confiÃ¡vel) e consome URLs de stream arbitrÃ¡rias, entÃ£o
+      XSS aqui Ã© o vetor de entrada.
+
+      A CSP Ã© injetada em tempo de build pelo plugin `csp-inject` do
+      vite.config.ts, e NÃƒO fica aqui de propÃ³sito: o Vite dev injeta um script
+      inline do React Refresh, que `script-src 'self'` bloquearia â€” e o dev
+      quebraria. No build de produÃ§Ã£o nÃ£o existe script inline.
+
+      connect-src e media-src ficam abertos porque Ã© app de streaming. A
+      restriÃ§Ã£o Ãºtil Ã© script-src, que barra execuÃ§Ã£o de string e injeÃ§Ã£o.
+    -->
+    <link rel="icon" type="image/png" href="./hamster.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ST PLAY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="./assets/index-Dj-KJrE0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D_OEfSH5.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
